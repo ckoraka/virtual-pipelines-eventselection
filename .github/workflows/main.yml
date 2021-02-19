@@ -46,6 +46,12 @@ jobs:
           name: skim_ggH
           path: skim_ggH.root
 
+      - uses: actions/upload-artifact@v2
+        with:
+          name: log_ggH
+          path: skim_ggH.log
+
+
   plot:
     needs: skim
     runs-on: ubuntu-latest
@@ -86,6 +92,8 @@ jobs:
 
       - name: cutflow test
         run: python tests/test_cutflow_ggH.py
+        with:
+          name: log_ggH  
 
       - name: plot test
         run: python tests/test_plot_ggH.py
