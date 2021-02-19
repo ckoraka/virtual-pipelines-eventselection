@@ -83,7 +83,7 @@ jobs:
       - name: Download from skim
         uses: actions/download-artifact@v2
         with:
-          name: skim_ggH
+          name: skim_ggH,log_ggH
 
       - name: Download from plot
         uses: actions/download-artifact@v2
@@ -92,8 +92,6 @@ jobs:
 
       - name: cutflow test
         run: python tests/test_cutflow_ggH.py
-        with:
-          name: log_ggH  
 
       - name: plot test
         run: python tests/test_plot_ggH.py
