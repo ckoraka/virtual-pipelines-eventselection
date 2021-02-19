@@ -1,13 +1,7 @@
 name: example
 on: push
 jobs:
-  greeting:
-    runs-on: ubuntu-latest
-    steps:
-      - run: echo hello world
-
   build_skim:
-    needs: greeting
     runs-on: ubuntu-latest
     container: rootproject/root-conda:${{ matrix.version }}
     strategy:
@@ -42,7 +36,7 @@ jobs:
       - name: skim
         run: |
           chmod +x ./skim
-          ./skim root://eosuser.cern.ch//eos/user/g/gstark/AwesomeWorkshopFeb2020/GluGluToHToTauTau.root skim_ggH.root 19.6 11467.0 0.1
+          ./skim root://eosuser.cern.ch//eos/user/g/gstark/AwesomeWorkshopFeb2020/GluGluToHToTauTau.root skim_ggH.root 19.6 11467.0 0.1 > skim_ggH.log
 
       - uses: actions/upload-artifact@v2
         with:
